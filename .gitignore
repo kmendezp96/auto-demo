@@ -1,3 +1,7 @@
+#config and target
+target
+.idea
+
 # Compiled class file
 *.class
 
