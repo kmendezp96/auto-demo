@@ -116,6 +116,23 @@ public class SearchPage extends AbstractPage {
             System.out.println(result.findElement(productTitleSelector).getText());
         }
     }
+    public void printFirstLimitedProductsWithPrice(int elementsToPrint){
+        List<WebElement> firstResults = DriverSetUp.getWebDriver()
+                .findElements(resultsSelector).stream().limit(elementsToPrint).collect(Collectors.toList());
+        for (WebElement result:firstResults){
+            double shippingPrice = 0.0;
+            double price = Double.parseDouble(result.
+                    findElement(primaryPriceSelector).getText()
+                    .split("\\$")[1].split(" ")[0].replace(",",""));
+            String[] tempShippingPriceText = result.findElement(shippingPriceSelector).getText().split("\\$");
+            if(tempShippingPriceText.length>1){
+                shippingPrice = Double.parseDouble(tempShippingPriceText[1]
+                        .split(" ")[0].replace(",",""));
+                }
+            System.out.println(result.findElement(productTitleSelector).getText()+" price:"+
+                    (price+shippingPrice));
+        }
+    }
 
     private void orderResultsBy(String query){
         new Actions(DriverSetUp.getWebDriver())

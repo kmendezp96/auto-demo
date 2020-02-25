@@ -48,7 +48,7 @@ public class SearchSteps {
                 searchPage.areResultsOrderedByAscendantPrice(elementsToAssert),
                 CoreMatchers.is(true));
         System.out.println("\n in ascendant price:");
-        searchPage.printFirstLimitedProducts(elementsToAssert);
+        searchPage.printFirstLimitedProductsWithPrice(elementsToAssert);
     }
 
     @And("^the user can order the results by best match and see the first (\\d+) results$")
@@ -62,6 +62,6 @@ public class SearchSteps {
     public void theUserCanOrderTheResultsByDescendantPriceAndSeeTheFirstResults(int elementsToPrint) {
         searchPage.orderResultsByDescendantPrice();
         System.out.println("\n in descendant price:");
-        searchPage.printFirstLimitedProducts(elementsToPrint);
+        searchPage.printFirstLimitedProductsWithPrice(elementsToPrint);
     }
 }
