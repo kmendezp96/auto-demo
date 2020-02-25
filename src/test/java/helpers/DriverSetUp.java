@@ -17,6 +17,7 @@ public class DriverSetUp {
     public static WebDriver getWebDriver(){
         return webDriver;
     }
+
     @After
     public void tearDown() {
         webDriver.quit();

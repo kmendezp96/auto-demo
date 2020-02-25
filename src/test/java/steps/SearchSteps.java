@@ -1,9 +1,11 @@
 package steps;
 
-import cucumber.api.PendingException;
+import static org.junit.Assert.assertThat;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.hamcrest.CoreMatchers;
 import pages.HomePage;
 import pages.SearchPage;
 
@@ -35,4 +37,31 @@ public class SearchSteps {
         searchPage.printTotalResults();
     }
 
+    @And("^the user orders the results by ascendant price$")
+    public void theUserOrdersTheResultsByAscendantPrice() {
+        searchPage.orderResultsByAscendantPrice();
+    }
+
+    @Then("^the first (\\d+) results should be in ascendant price$")
+    public void theFirstResultsShouldBeInAscendantPrice(int elementsToAssert) {
+        assertThat("the elements should be ordered in ascendant price",
+                searchPage.areResultsOrderedByAscendantPrice(elementsToAssert),
+                CoreMatchers.is(true));
+        System.out.println("\n in ascendant price:");
+        searchPage.printFirstLimitedProducts(elementsToAssert);
+    }
+
+    @And("^the user can order the results by best match and see the first (\\d+) results$")
+    public void theUserCanOrderTheResultsByBestMatchAndSeeTheFirstResults(int elementsToPrint) {
+        searchPage.orderResultsByBestMatch();
+        System.out.println("\n in best match order:");
+        searchPage.printFirstLimitedProducts(elementsToPrint);
+    }
+
+    @And("^the user can order the results by descendant price and see the first (\\d+) results$")
+    public void theUserCanOrderTheResultsByDescendantPriceAndSeeTheFirstResults(int elementsToPrint) {
+        searchPage.orderResultsByDescendantPrice();
+        System.out.println("\n in descendant price:");
+        searchPage.printFirstLimitedProducts(elementsToPrint);
+    }
 }
