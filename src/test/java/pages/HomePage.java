@@ -19,6 +19,10 @@ public class HomePage extends AbstractPage {
     private WebElement englishLanguageOption;
 
     public void searchByKeyword(String keyword){
+        int v = 10;
+        for(int i=0;i<v;i++){
+            System.out.println("cualquier cosa");
+        }
         searchInput.sendKeys(keyword);
         searchButton.click();
     }
