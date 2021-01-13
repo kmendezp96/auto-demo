@@ -42,7 +42,7 @@ public class SearchSteps {
         searchPage.orderResultsByAscendantPrice();
     }
 
-    @Then("^the first (\\d+) results should be in ascendant price$")
+    @Then("^the first (\\d+) results should be in descendant price$")
     public void theFirstResultsShouldBeInAscendantPrice(int elementsToAssert) {
         assertThat("the elements should be ordered in ascendant price",
                 searchPage.areResultsOrderedByAscendantPrice(elementsToAssert),

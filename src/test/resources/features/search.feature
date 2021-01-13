@@ -12,4 +12,3 @@ Feature: As a possible buyer
     Then the first 5 results should be in ascendant price
     And the buyer can order the results by best match and see the first 5 results
     And the buyer can order the results by descendant price and see the first 5 results
-

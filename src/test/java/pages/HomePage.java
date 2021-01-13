@@ -18,11 +18,17 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//*[@class='gh-menu']//*[@class='gh-submenu gh-eb-o']//li[@lang='en-US']")
     private WebElement englishLanguageOption;
 
+    public int magicMethod(int a){
+        a = a+3;
+        return a;
+    }
+
     public void searchByKeyword(String keyword){
         int v = 10;
         for(int i=0;i<v;i++){
             System.out.println("cualquier cosa");
         }
+        searchButton.click();
         searchInput.sendKeys(keyword);
         searchButton.click();
     }
